@@ -82,9 +82,9 @@ const Index = () => {
             radial-gradient(at 100% 0%, hsl(160 82% 39% / 0.03) 0px, transparent 50%),
             radial-gradient(at 100% 100%, hsl(160 82% 39% / 0.05) 0px, transparent 50%),
             radial-gradient(at 0% 100%, hsl(160 82% 39% / 0.03) 0px, transparent 50%)
-          `,
-        }}
-      >
+          `
+        }}>
+        
         {/* Grid crosshairs */}
         <div className="absolute inset-0 pointer-events-none z-[2] hidden md:block">
           <div className="crosshair" style={{ top: 133, left: "4rem" }} />
@@ -97,8 +97,8 @@ const Index = () => {
         {/* Dimmer overlay */}
         <div
           ref={heroDimmerRef}
-          className="absolute inset-0 bg-background opacity-0 z-[3] pointer-events-none"
-        />
+          className="absolute inset-0 bg-background opacity-0 z-[3] pointer-events-none" />
+        
 
         {/* ===== NAV ===== */}
         <header className="relative z-10 flex justify-between items-center px-8 lg:px-16 py-8 w-full">
@@ -122,8 +122,8 @@ const Index = () => {
           <div className="flex items-center gap-8 text-sm font-medium">
             <a
               href="#join"
-              className="flex items-center gap-3 bg-foreground/[0.08] pl-1 pr-5 py-1 rounded-full border border-foreground/10 font-semibold hover:bg-foreground/[0.15] hover:border-foreground/30 hover:-translate-y-0.5 transition-all duration-300 group"
-            >
+              className="flex items-center gap-3 bg-foreground/[0.08] pl-1 pr-5 py-1 rounded-full border border-foreground/10 font-semibold hover:bg-foreground/[0.15] hover:border-foreground/30 hover:-translate-y-0.5 transition-all duration-300 group">
+              
               <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground shrink-0 group-hover:-rotate-45 transition-transform duration-300">
                 <ArrowRight className="w-4 h-4" />
               </div>
@@ -135,11 +135,11 @@ const Index = () => {
         {/* ===== HERO CONTENT — CENTERED STACKED LAYOUT ===== */}
         <div
           ref={heroContentRef}
-          className="relative z-[5] flex-grow flex flex-col items-center justify-center px-6 lg:px-16 gap-10 lg:gap-12 text-center pb-16"
-        >
+          className="relative z-[5] flex-grow flex flex-col items-center justify-center px-6 lg:px-16 gap-10 lg:gap-12 text-center pb-16 mt-[50px]">
+          
           {/* Animated badge */}
           <div className="opacity-0 animate-fade-in-up animation-delay-100">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/[0.08] text-primary text-xs font-semibold tracking-widest uppercase">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/[0.08] text-primary text-xs font-semibold tracking-widest uppercase mt-[50px]">
               <span className="animate-pulse">✦</span> Your content, remembered
             </span>
           </div>
@@ -150,9 +150,9 @@ const Index = () => {
             style={{
               fontFamily: "var(--font-heading)",
               fontSize: "clamp(2.5rem, 6vw, 5.5rem)",
-              textShadow: "0 4px 20px rgba(0,0,0,0.8)",
-            }}
-          >
+              textShadow: "0 4px 20px rgba(0,0,0,0.8)"
+            }}>
+            
             Intelligent{" "}
             <span className="bg-gradient-to-r from-primary to-emerald-300 bg-clip-text text-transparent">
               content consumption
@@ -170,8 +170,8 @@ const Index = () => {
           <div className="opacity-0 animate-fade-in-up animation-delay-400">
             <a
               href="#join"
-              className="btn-shimmer inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-sm tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300"
-            >
+              className="btn-shimmer inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-sm tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300">
+              
               Start Building Your Habit
               <ArrowRight className="w-4 h-4" />
             </a>
@@ -186,12 +186,12 @@ const Index = () => {
                 muted
                 loop
                 playsInline
-                poster="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?q=80&w=2670&auto=format&fit=crop"
-              >
+                poster="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?q=80&w=2670&auto=format&fit=crop">
+                
                 <source
                   src="https://assets.mixkit.co/videos/preview/mixkit-stars-in-space-background-1610-large.mp4"
-                  type="video/mp4"
-                />
+                  type="video/mp4" />
+                
               </video>
             </div>
           </div>
@@ -204,9 +204,9 @@ const Index = () => {
         ref={featuresRef}
         className="relative z-20 opacity-0 rounded-t-[2.5rem] border-t border-border overflow-hidden"
         style={{
-          background: "linear-gradient(to bottom, hsl(160 82% 15%), hsl(var(--background)))",
-        }}
-      >
+          background: "linear-gradient(to bottom, hsl(160 82% 15%), hsl(var(--background)))"
+        }}>
+        
         <div className="py-32 px-6 lg:px-16">
           <div className="text-center max-w-xl mx-auto mb-20 observe-fade">
             <span className="text-primary uppercase tracking-[0.2em] text-xs font-semibold block mb-4">
@@ -214,8 +214,8 @@ const Index = () => {
             </span>
             <h2
               className="text-foreground mb-6"
-              style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(2rem, 4vw, 3rem)" }}
-            >
+              style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(2rem, 4vw, 3rem)" }}>
+              
               Why rem?
             </h2>
             <p className="text-muted-foreground text-lg">
@@ -225,27 +225,27 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {[
-              {
-                icon: <Upload className="w-6 h-6" />,
-                title: "Save From Anywhere",
-                text: "Share links, images, or text directly to rem from any app. Works with your browser, social feeds, and messaging apps.",
-              },
-              {
-                icon: <Archive className="w-6 h-6" />,
-                title: "Personal Queue",
-                text: "Everything you save appears in one clean, scannable list. Rich previews show titles, images, and descriptions instantly.",
-              },
-              {
-                icon: <Clock className="w-6 h-6" />,
-                title: "Smart Reminders",
-                text: "Set daily or weekly reminders at times that work for you. rem learns your habits and suggests the perfect moment to catch up.",
-              },
-            ].map((feature, i) => (
-              <div
-                key={i}
-                data-highlight
-                className="observe-fade group border border-border rounded-2xl p-10 transition-all duration-400 hover:-translate-y-1 hover:border-primary hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)]"
-              >
+            {
+              icon: <Upload className="w-6 h-6" />,
+              title: "Save From Anywhere",
+              text: "Share links, images, or text directly to rem from any app. Works with your browser, social feeds, and messaging apps."
+            },
+            {
+              icon: <Archive className="w-6 h-6" />,
+              title: "Personal Queue",
+              text: "Everything you save appears in one clean, scannable list. Rich previews show titles, images, and descriptions instantly."
+            },
+            {
+              icon: <Clock className="w-6 h-6" />,
+              title: "Smart Reminders",
+              text: "Set daily or weekly reminders at times that work for you. rem learns your habits and suggests the perfect moment to catch up."
+            }].
+            map((feature, i) =>
+            <div
+              key={i}
+              data-highlight
+              className="observe-fade group border border-border rounded-2xl p-10 transition-all duration-400 hover:-translate-y-1 hover:border-primary hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)]">
+              
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-6">
                   {feature.icon}
                 </div>
@@ -254,7 +254,7 @@ const Index = () => {
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">{feature.text}</p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -266,18 +266,18 @@ const Index = () => {
           background: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop')`,
           backgroundAttachment: "fixed",
           backgroundPosition: "center",
-          backgroundSize: "cover",
-        }}
-      >
+          backgroundSize: "cover"
+        }}>
+        
         <blockquote className="max-w-3xl observe-fade">
           <p
             className="text-foreground italic leading-snug mb-8"
             style={{
               fontFamily: "var(--font-heading)",
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
-              textShadow: "0 4px 10px rgba(0,0,0,0.5)",
-            }}
-          >
+              textShadow: "0 4px 10px rgba(0,0,0,0.5)"
+            }}>
+            
             "rem respects your time. It doesn't just store links; it guarantees you'll actually enjoy them."
           </p>
         </blockquote>
@@ -293,8 +293,8 @@ const Index = () => {
               <div className="absolute bg-primary/10" style={{ left: "30%", top: 0, width: 1, height: "100%" }} />
               <span
                 className="text-foreground/70 text-2xl"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
+                style={{ fontFamily: "var(--font-heading)" }}>
+                
                 READING LIST
               </span>
             </div>
@@ -307,29 +307,29 @@ const Index = () => {
             </span>
             <h2
               className="text-foreground mb-8"
-              style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(2rem, 4vw, 3rem)" }}
-            >
+              style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(2rem, 4vw, 3rem)" }}>
+              
               Build The Habit
             </h2>
 
             {[
-              { title: "Capture", desc: "See something interesting? Tap share and choose rem.", active: true },
-              { title: "Consume", desc: "Get nudged at the right time. Snooze if busy, or dive in." },
-              { title: "Track", desc: "Watch your stats grow as you clear your queue and build streaks." },
-            ].map((step, i) => (
-              <div
-                key={i}
-                data-highlight
-                className={`mb-8 pl-6 border-l-2 transition-colors duration-300 ${
-                  step.active ? "border-primary" : "border-border"
-                }`}
-              >
+            { title: "Capture", desc: "See something interesting? Tap share and choose rem.", active: true },
+            { title: "Consume", desc: "Get nudged at the right time. Snooze if busy, or dive in." },
+            { title: "Track", desc: "Watch your stats grow as you clear your queue and build streaks." }].
+            map((step, i) =>
+            <div
+              key={i}
+              data-highlight
+              className={`mb-8 pl-6 border-l-2 transition-colors duration-300 ${
+              step.active ? "border-primary" : "border-border"}`
+              }>
+              
                 <h4 className="text-xl text-foreground mb-2" style={{ fontFamily: "var(--font-heading)" }}>
                   {step.title}
                 </h4>
                 <p className="text-muted-foreground">{step.desc}</p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -339,13 +339,13 @@ const Index = () => {
         id="join"
         className="mx-4 mb-4 rounded-2xl text-center py-32 px-6 relative overflow-hidden"
         style={{
-          background: "radial-gradient(circle at 50% 100%, hsl(160 82% 15%) 0%, hsl(var(--background)) 70%)",
-        }}
-      >
+          background: "radial-gradient(circle at 50% 100%, hsl(160 82% 15%) 0%, hsl(var(--background)) 70%)"
+        }}>
+        
         <h2
           className="text-foreground mb-6 observe-fade"
-          style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(2rem, 4vw, 3rem)" }}
-        >
+          style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(2rem, 4vw, 3rem)" }}>
+          
           Join the Journey
         </h2>
         <p className="text-muted-foreground text-lg max-w-md mx-auto mb-8 observe-fade">
@@ -354,8 +354,8 @@ const Index = () => {
         </p>
         <a
           href="https://natanim.dev"
-          className="cta-fill observe-fade inline-block px-10 py-4 rounded-full border border-primary text-primary uppercase tracking-[0.15em] text-sm font-medium hover:text-primary-foreground transition-colors duration-300"
-        >
+          className="cta-fill observe-fade inline-block px-10 py-4 rounded-full border border-primary text-primary uppercase tracking-[0.15em] text-sm font-medium hover:text-primary-foreground transition-colors duration-300">
+          
           Get In Touch
         </a>
       </section>
@@ -366,8 +366,8 @@ const Index = () => {
           <div>
             <h5
               className="text-2xl text-foreground mb-3 lowercase font-semibold tracking-tight"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
+              style={{ fontFamily: "var(--font-heading)" }}>
+              
               rem
             </h5>
             <p className="text-muted-foreground text-sm">Your intelligent content consumption vault.</p>
@@ -395,8 +395,8 @@ const Index = () => {
 
         <div className="footer-giant-text">rem</div>
       </footer>
-    </div>
-  );
+    </div>);
+
 };
 
 export default Index;
