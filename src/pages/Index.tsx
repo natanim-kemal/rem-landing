@@ -181,7 +181,7 @@ const Index = () => {
           <div className="opacity-0 animate-fade-in-up animation-delay-500 w-full max-w-4xl mt-6">
             <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-foreground/10">
               <video
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover mt-[150px] mb-[50px]"
                 autoPlay
                 muted
                 loop
