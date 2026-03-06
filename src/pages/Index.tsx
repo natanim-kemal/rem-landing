@@ -135,7 +135,7 @@ const Index = () => {
         {/* ===== HERO CONTENT — CENTERED STACKED LAYOUT ===== */}
         <div
           ref={heroContentRef}
-          className="relative z-[5] flex-grow flex flex-col items-center justify-center px-6 lg:px-16 gap-8 text-center"
+          className="relative z-[5] flex-grow flex flex-col items-center justify-center px-6 lg:px-16 gap-10 lg:gap-12 text-center pb-16"
         >
           {/* Animated badge */}
           <div className="opacity-0 animate-fade-in-up animation-delay-100">
