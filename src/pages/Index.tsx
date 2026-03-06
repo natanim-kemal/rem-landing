@@ -74,7 +74,7 @@ const Index = () => {
       {/* ========== HERO ========== */}
       <section
         ref={heroRef}
-        className="relative w-full h-dvh flex flex-col overflow-hidden noise-overlay hero-orbs"
+        className="relative w-full min-h-dvh flex flex-col overflow-hidden noise-overlay hero-orbs"
         style={{
           backgroundImage: `
             repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.015) 3px, rgba(255,255,255,0.015) 4px),
