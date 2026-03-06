@@ -178,7 +178,7 @@ const Index = () => {
           </div>
 
           {/* Hero visual */}
-          <div className="opacity-0 animate-fade-in-up animation-delay-500 w-full max-w-3xl mt-4">
+          <div className="opacity-0 animate-fade-in-up animation-delay-500 w-full max-w-4xl mt-6">
             <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-foreground/10">
               <video
                 className="w-full h-full object-cover"
