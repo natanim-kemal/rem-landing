@@ -74,7 +74,7 @@ const Index = () => {
       {/* ========== HERO ========== */}
       <section
         ref={heroRef}
-        className="relative w-full h-dvh flex flex-col overflow-hidden noise-overlay hero-orbs"
+        className="relative w-full min-h-dvh flex flex-col overflow-hidden noise-overlay hero-orbs"
         style={{
           backgroundImage: `
             repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.015) 3px, rgba(255,255,255,0.015) 4px),
@@ -135,7 +135,7 @@ const Index = () => {
         {/* ===== HERO CONTENT — CENTERED STACKED LAYOUT ===== */}
         <div
           ref={heroContentRef}
-          className="relative z-[5] flex-grow flex flex-col items-center justify-center px-6 lg:px-16 gap-8 text-center"
+          className="relative z-[5] flex-grow flex flex-col items-center justify-center px-6 lg:px-16 gap-10 lg:gap-12 text-center pb-16"
         >
           {/* Animated badge */}
           <div className="opacity-0 animate-fade-in-up animation-delay-100">
@@ -178,7 +178,7 @@ const Index = () => {
           </div>
 
           {/* Hero visual */}
-          <div className="opacity-0 animate-fade-in-up animation-delay-500 w-full max-w-3xl mt-4">
+          <div className="opacity-0 animate-fade-in-up animation-delay-500 w-full max-w-4xl mt-6">
             <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-foreground/10">
               <video
                 className="w-full h-full object-cover"
