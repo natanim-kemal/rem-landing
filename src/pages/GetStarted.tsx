@@ -21,7 +21,7 @@ const GetStarted = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="relative z-10 flex justify-between items-center px-6 lg:px-12 py-6 w-full border-b border-border bg-transparent">
+      <header className="relative z-10 flex justify-between items-center px-6 lg:px-12 py-6 w-full border-b border-border">
         <Link to="/" className="flex items-center gap-2" style={{ fontFamily: "var(--font-heading)" }}>
           <img src={iconSrc} alt="rem logo" className="w-6 h-6" />
           <span className="text-xl font-semibold tracking-tight text-foreground">rem</span>
