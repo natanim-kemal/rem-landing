@@ -375,7 +375,7 @@ const Index = () => {
 
           <div className="flex gap-16">
             <div className="flex flex-col gap-3">
-              <span className="text-foreground font-semibold text-sm">Engineering</span>
+              <span className="text-foreground font-medium text-sm">Engineering</span>
               <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors">Architecture</a>
               <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors">CI/CD Pipeline</a>
               <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors">Repository Setup</a>
