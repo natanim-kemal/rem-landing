@@ -159,7 +159,7 @@ const Index = () => {
               textShadow: "0 4px 20px rgba(0,0,0,0.8)",
             }}
           >
-            Your Intelligent{" "}
+            Intelligent{" "}
             <span className="bg-gradient-to-r from-primary to-emerald-300 bg-clip-text text-transparent">
               content consumption
             </span>{" "}
