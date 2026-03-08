@@ -178,23 +178,23 @@ const Index = () => {
           </div>
 
           {/* Hero visual */}
-          <div className="opacity-0 animate-fade-in-up animation-delay-500 w-full max-w-4xl mt-[150px] mb-[50px]">
-            <div className="aspect-video rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-foreground/10 mt-[150px]">
-              <video
-                className="w-full h-full object-cover mt-0 mb-0"
-                autoPlay
-                muted
-                loop
-                playsInline
-                poster="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?q=80&w=2670&auto=format&fit=crop">
-                
-                <source
-                  src="https://assets.mixkit.co/videos/preview/mixkit-stars-in-space-background-1610-large.mp4"
-                  type="video/mp4" />
-                
-              </video>
-            </div>
-          </div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
         </div>
       </section>
 
