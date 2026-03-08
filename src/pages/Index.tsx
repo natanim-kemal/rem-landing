@@ -98,40 +98,40 @@ const Index = () => {
         <div ref={heroDimmerRef} className="absolute inset-0 bg-background opacity-0 z-[3] pointer-events-none" />
 
         {/* ===== NAV ===== */}
-        <header className="relative z-10 flex justify-between items-center px-8 lg:px-16 py-8 w-full">
-          <div className="flex items-center gap-3" style={{ fontFamily: "var(--font-heading)" }}>
-            <img src={iconSrc} alt="rem logo" className="w-8 h-8" />
-            <span className="text-2xl font-semibold tracking-tight text-foreground">rem</span>
+        <header className="relative z-10 flex justify-between items-center px-6 lg:px-12 py-6 w-full">
+          <div className="flex items-center gap-2" style={{ fontFamily: "var(--font-heading)" }}>
+            <img src={iconSrc} alt="rem logo" className="w-6 h-6" />
+            <span className="text-xl font-semibold tracking-tight text-foreground">rem</span>
           </div>
 
-          <nav className="absolute left-1/2 -translate-x-1/2 hidden md:flex gap-8 bg-foreground/[0.04] backdrop-blur-xl px-10 py-3 rounded-full border border-foreground/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
+          <nav className="absolute left-1/2 -translate-x-1/2 hidden md:flex gap-6 bg-foreground/[0.04] backdrop-blur-xl px-8 py-2.5 rounded-full border border-foreground/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
             <a
               href="#features"
-              className="text-sm text-muted-foreground hover:text-primary transition-all duration-300 hover:[text-shadow:0_0_8px_hsl(160_82%_39%/0.4)]"
+              className="text-xs text-muted-foreground hover:text-primary transition-all duration-300 hover:[text-shadow:0_0_8px_hsl(160_82%_39%/0.4)]"
             >
               Queues
             </a>
             <a
               href="#schedule"
-              className="text-sm text-muted-foreground hover:text-primary transition-all duration-300 hover:[text-shadow:0_0_8px_hsl(160_82%_39%/0.4)]"
+              className="text-xs text-muted-foreground hover:text-primary transition-all duration-300 hover:[text-shadow:0_0_8px_hsl(160_82%_39%/0.4)]"
             >
               Habits
             </a>
             <a
               href="#join"
-              className="text-sm text-muted-foreground hover:text-primary transition-all duration-300 hover:[text-shadow:0_0_8px_hsl(160_82%_39%/0.4)]"
+              className="text-xs text-muted-foreground hover:text-primary transition-all duration-300 hover:[text-shadow:0_0_8px_hsl(160_82%_39%/0.4)]"
             >
               Join
             </a>
           </nav>
 
-          <div className="flex items-center gap-8 text-sm font-medium">
+          <div className="flex items-center gap-6 text-xs font-medium">
             <a
               href="#join"
-              className="flex items-center gap-3 sm:bg-foreground/[0.08] sm:pl-1 sm:pr-5 sm:py-1 rounded-full sm:border sm:border-foreground/10 font-semibold sm:hover:bg-foreground/[0.15] sm:hover:border-foreground/30 hover:-translate-y-0.5 transition-all duration-300 group"
+              className="flex items-center gap-2 sm:bg-foreground/[0.08] sm:pl-1 sm:pr-4 sm:py-1 rounded-full sm:border sm:border-foreground/10 font-semibold sm:hover:bg-foreground/[0.15] sm:hover:border-foreground/30 hover:-translate-y-0.5 transition-all duration-300 group"
             >
-              <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground shrink-0 group-hover:-rotate-45 transition-transform duration-300">
-                <ArrowRight className="w-4 h-4" />
+              <div className="w-7 h-7 bg-primary rounded-full flex items-center justify-center text-primary-foreground shrink-0 group-hover:-rotate-45 transition-transform duration-300">
+                <ArrowRight className="w-3.5 h-3.5" />
               </div>
               <span className="hidden sm:inline">Get Started</span>
             </a>
@@ -141,21 +141,21 @@ const Index = () => {
         {/* ===== HERO CONTENT — CENTERED STACKED LAYOUT ===== */}
         <div
           ref={heroContentRef}
-          className="relative z-[5] flex-grow flex flex-col items-center justify-center px-6 lg:px-16 gap-10 lg:gap-12 text-center pb-16 mt-[50px]"
+          className="relative z-[5] flex-grow flex flex-col items-center justify-center px-6 lg:px-12 gap-6 lg:gap-8 text-center pb-12"
         >
           {/* Animated badge */}
           <div className="opacity-0 animate-fade-in-up animation-delay-100">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/[0.08] text-primary text-xs font-semibold tracking-widest uppercase mt-[50px]">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/[0.08] text-primary text-[0.65rem] font-semibold tracking-widest uppercase">
               <span className="animate-pulse">✦</span> Your content, remembered
             </span>
           </div>
 
           {/* Headline */}
           <h1
-            className="opacity-0 animate-fade-in-up animation-delay-200 text-foreground leading-[0.9] tracking-tight max-w-4xl"
+            className="opacity-0 animate-fade-in-up animation-delay-200 text-foreground leading-[0.9] tracking-tight max-w-3xl"
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "clamp(2.5rem, 6vw, 5.5rem)",
+              fontSize: "clamp(2rem, 5vw, 4rem)",
               textShadow: "0 4px 20px rgba(0,0,0,0.8)",
             }}
           >
@@ -167,7 +167,7 @@ const Index = () => {
           </h1>
 
           {/* Body text */}
-          <p className="opacity-0 animate-fade-in-up animation-delay-300 text-muted-foreground text-lg max-w-xl leading-relaxed font-light">
+          <p className="opacity-0 animate-fade-in-up animation-delay-300 text-muted-foreground text-sm max-w-lg leading-relaxed font-light">
             Stop letting saved links become digital graveyards. rem turns your "read later" list into a "read now" habit
             with smart reminders and beautiful organization.
           </p>
@@ -176,10 +176,10 @@ const Index = () => {
           <div className="opacity-0 animate-fade-in-up animation-delay-400">
             <a
               href="#join"
-              className="btn-shimmer inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-sm tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300"
+              className="btn-shimmer inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-xs tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300"
             >
               Start Building Your Habit
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-3.5 h-3.5" />
             </a>
           </div>
 
