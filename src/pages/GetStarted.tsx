@@ -202,7 +202,7 @@ const GetStarted = () => {
               rem is completely open-source. You can inspect the code, contribute features, report bugs, or fork the project for your own use. We believe in transparency and community-driven development.
             </p>
             <a
-              href="#"
+              href="https://github.com/natanim-kemal/rem"
               className="cta-fill inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-primary text-primary uppercase tracking-[0.15em] text-[0.65rem] font-medium hover:text-primary-foreground transition-colors duration-300"
             >
               <Github className="w-3.5 h-3.5" />
