@@ -163,13 +163,13 @@ const Index = () => {
           </p>
 
           <div className="opacity-0 animate-fade-in-up animation-delay-400">
-            <a
-              href="#join"
+            <Link
+              to="/get-started"
               className="btn-shimmer inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-xs tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300"
             >
               Start Building Your Habit
               <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
