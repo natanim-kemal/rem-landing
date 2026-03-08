@@ -122,7 +122,7 @@ const Index = () => {
           <div className="flex items-center gap-8 text-sm font-medium">
             <a
               href="#join"
-              className="flex items-center gap-3 bg-foreground/[0.08] pl-1 pr-5 py-1 rounded-full border border-foreground/10 font-semibold hover:bg-foreground/[0.15] hover:border-foreground/30 hover:-translate-y-0.5 transition-all duration-300 group">
+              className="flex items-center gap-3 bg-foreground/[0.08] pl-1 pr-5 py-1 rounded-full border border-foreground/10 font-medium hover:bg-foreground/[0.15] hover:border-foreground/30 hover:-translate-y-0.5 transition-all duration-300 group">
               
               <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground shrink-0 group-hover:-rotate-45 transition-transform duration-300">
                 <ArrowRight className="w-4 h-4" />
