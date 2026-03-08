@@ -139,7 +139,7 @@ const Index = () => {
           
           {/* Animated badge */}
           <div className="opacity-0 animate-fade-in-up animation-delay-100">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/[0.08] text-primary text-xs font-semibold tracking-widest uppercase mt-[50px]">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/[0.08] text-primary text-xs font-medium tracking-widest uppercase mt-[50px]">
               <span className="animate-pulse">✦</span> Your content, remembered
             </span>
           </div>
