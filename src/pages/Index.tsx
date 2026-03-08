@@ -104,7 +104,7 @@ const Index = () => {
         <header className="relative z-10 flex justify-between items-center px-8 lg:px-16 py-8 w-full">
           <div className="flex items-center gap-3" style={{ fontFamily: "var(--font-heading)" }}>
             <img src={iconSrc} alt="rem logo" className="w-8 h-8" />
-            <span className="text-2xl font-semibold tracking-tight text-foreground">rem</span>
+            <span className="text-2xl font-medium tracking-tight text-foreground">rem</span>
           </div>
 
           <nav className="absolute left-1/2 -translate-x-1/2 hidden md:flex gap-8 bg-foreground/[0.04] backdrop-blur-xl px-10 py-3 rounded-full border border-foreground/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
@@ -122,7 +122,7 @@ const Index = () => {
           <div className="flex items-center gap-8 text-sm font-medium">
             <a
               href="#join"
-              className="flex items-center gap-3 bg-foreground/[0.08] pl-1 pr-5 py-1 rounded-full border border-foreground/10 font-semibold hover:bg-foreground/[0.15] hover:border-foreground/30 hover:-translate-y-0.5 transition-all duration-300 group">
+              className="flex items-center gap-3 bg-foreground/[0.08] pl-1 pr-5 py-1 rounded-full border border-foreground/10 font-medium hover:bg-foreground/[0.15] hover:border-foreground/30 hover:-translate-y-0.5 transition-all duration-300 group">
               
               <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground shrink-0 group-hover:-rotate-45 transition-transform duration-300">
                 <ArrowRight className="w-4 h-4" />
@@ -139,7 +139,7 @@ const Index = () => {
           
           {/* Animated badge */}
           <div className="opacity-0 animate-fade-in-up animation-delay-100">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/[0.08] text-primary text-xs font-semibold tracking-widest uppercase mt-[50px]">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/[0.08] text-primary text-xs font-medium tracking-widest uppercase mt-[50px]">
               <span className="animate-pulse">✦</span> Your content, remembered
             </span>
           </div>
@@ -170,7 +170,7 @@ const Index = () => {
           <div className="opacity-0 animate-fade-in-up animation-delay-400">
             <a
               href="#join"
-              className="btn-shimmer inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-sm tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300">
+              className="btn-shimmer inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-medium text-sm tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300">
               
               Start Building Your Habit
               <ArrowRight className="w-4 h-4" />
@@ -209,7 +209,7 @@ const Index = () => {
         
         <div className="py-32 px-6 lg:px-16">
           <div className="text-center max-w-xl mx-auto mb-20 observe-fade">
-            <span className="text-primary uppercase tracking-[0.2em] text-xs font-semibold block mb-4">
+            <span className="text-primary uppercase tracking-[0.2em] text-xs font-medium block mb-4">
               The Solution
             </span>
             <h2
@@ -302,7 +302,7 @@ const Index = () => {
 
           {/* Steps */}
           <div className="flex-1 observe-fade">
-            <span className="text-primary uppercase tracking-[0.2em] text-xs font-semibold block mb-4">
+            <span className="text-primary uppercase tracking-[0.2em] text-xs font-medium block mb-4">
               How It Works
             </span>
             <h2
@@ -365,7 +365,7 @@ const Index = () => {
         <div className="relative z-[1] flex flex-col md:flex-row justify-between items-start flex-wrap gap-12 max-w-5xl mx-auto">
           <div>
             <h5
-              className="text-2xl text-foreground mb-3 lowercase font-semibold tracking-tight"
+              className="text-2xl text-foreground mb-3 lowercase font-medium tracking-tight"
               style={{ fontFamily: "var(--font-heading)" }}>
               
               rem
@@ -375,13 +375,13 @@ const Index = () => {
 
           <div className="flex gap-16">
             <div className="flex flex-col gap-3">
-              <span className="text-foreground font-semibold text-sm">Engineering</span>
+              <span className="text-foreground font-medium text-sm">Engineering</span>
               <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors">Architecture</a>
               <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors">CI/CD Pipeline</a>
               <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors">Repository Setup</a>
             </div>
             <div className="flex flex-col gap-3">
-              <span className="text-foreground font-semibold text-sm">Standards</span>
+              <span className="text-foreground font-medium text-sm">Standards</span>
               <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors">Security Guidelines</a>
               <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors">Development Standards</a>
               <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors">Product Requirements</a>
