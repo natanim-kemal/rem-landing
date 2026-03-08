@@ -209,7 +209,7 @@ const Index = () => {
         
         <div className="py-32 px-6 lg:px-16">
           <div className="text-center max-w-xl mx-auto mb-20 observe-fade">
-            <span className="text-primary uppercase tracking-[0.2em] text-xs font-semibold block mb-4">
+            <span className="text-primary uppercase tracking-[0.2em] text-xs font-medium block mb-4">
               The Solution
             </span>
             <h2
