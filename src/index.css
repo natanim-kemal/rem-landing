@@ -90,6 +90,7 @@
     @apply bg-background text-foreground;
     font-family: var(--font-body);
     overflow-x: hidden;
+    zoom: 0.8;
   }
 
   h1, h2, h3, h4, h5, h6 {
