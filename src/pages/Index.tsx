@@ -170,7 +170,7 @@ const Index = () => {
           <div className="opacity-0 animate-fade-in-up animation-delay-400">
             <a
               href="#join"
-              className="btn-shimmer inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-sm tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300">
+              className="btn-shimmer inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-medium text-sm tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300">
               
               Start Building Your Habit
               <ArrowRight className="w-4 h-4" />
