@@ -22,7 +22,7 @@ const GetStarted = () => {
   return (
     <div className="min-h-screen bg-background">
       <section
-        className="relative py-20 px-6 lg:px-12 text-center noise-overlay overflow-hidden"
+        className="relative pt-0 pb-20 px-6 lg:px-12 text-center noise-overlay overflow-hidden"
         style={{
           backgroundImage: `
             radial-gradient(at 30% 20%, hsl(160 82% 39% / 0.08) 0px, transparent 50%),
@@ -30,6 +30,19 @@ const GetStarted = () => {
           `,
         }}
       >
+        <nav className="flex justify-between items-center py-6 mb-14">
+          <Link to="/" className="flex items-center gap-2" style={{ fontFamily: "var(--font-heading)" }}>
+            <img src={iconSrc} alt="rem logo" className="w-6 h-6" />
+            <span className="text-xl font-semibold tracking-tight text-foreground">rem</span>
+          </Link>
+          <Link
+            to="/"
+            className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            Back to Home
+          </Link>
+        </nav>
         <div className="opacity-0 animate-fade-in-up animation-delay-100">
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/[0.08] text-primary text-[0.65rem] font-semibold tracking-widest uppercase mb-6">
             <MonitorSmartphone className="w-3 h-3" /> Get Started
