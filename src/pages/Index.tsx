@@ -302,7 +302,7 @@ const Index = () => {
 
           {/* Steps */}
           <div className="flex-1 observe-fade">
-            <span className="text-primary uppercase tracking-[0.2em] text-xs font-semibold block mb-4">
+            <span className="text-primary uppercase tracking-[0.2em] text-xs font-medium block mb-4">
               How It Works
             </span>
             <h2
