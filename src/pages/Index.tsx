@@ -381,7 +381,7 @@ const Index = () => {
               <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors">Repository Setup</a>
             </div>
             <div className="flex flex-col gap-3">
-              <span className="text-foreground font-semibold text-sm">Standards</span>
+              <span className="text-foreground font-medium text-sm">Standards</span>
               <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors">Security Guidelines</a>
               <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors">Development Standards</a>
               <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors">Product Requirements</a>
