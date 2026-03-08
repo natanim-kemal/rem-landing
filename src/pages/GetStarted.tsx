@@ -21,7 +21,7 @@ const GetStarted = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="relative z-10 flex justify-between items-center px-6 lg:px-12 py-6 w-full border-b border-border">
+      <header className="relative z-10 flex justify-between items-center px-6 lg:px-12 py-6 w-full border-b border-border bg-transparent">
         <Link to="/" className="flex items-center gap-2" style={{ fontFamily: "var(--font-heading)" }}>
           <img src={iconSrc} alt="rem logo" className="w-6 h-6" />
           <span className="text-xl font-semibold tracking-tight text-foreground">rem</span>
@@ -106,22 +106,24 @@ const GetStarted = () => {
                 ))}
               </div>
 
-              <a
-                href="#"
-                className="btn-shimmer inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-semibold text-xs tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300"
-              >
-                <Download className="w-3.5 h-3.5" />
-                Download APK
-              </a>
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="https://github.com/natanim-kemal/rem"
+                  className="btn-shimmer inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-semibold text-xs tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  Download APK
+                </a>
 
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 ml-3 text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
-              >
-                <Github className="w-3.5 h-3.5" />
-                View Source
-                <ExternalLink className="w-2.5 h-2.5" />
-              </a>
+                <a
+                  href="https://github.com/natanim-kemal/rem"
+                  className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
+                >
+                  <Github className="w-3.5 h-3.5" />
+                  View Source
+                  <ExternalLink className="w-2.5 h-2.5" />
+                </a>
+              </div>
             </div>
           </div>
 
@@ -162,22 +164,24 @@ const GetStarted = () => {
                 ))}
               </div>
 
-              <a
-                href="#"
-                className="btn-shimmer inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-semibold text-xs tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300"
-              >
-                <Download className="w-3.5 h-3.5" />
-                Download Extension
-              </a>
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="https://github.com/natanim-kemal/rem"
+                  className="btn-shimmer inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-semibold text-xs tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  Download Extension
+                </a>
 
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 ml-3 text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
-              >
-                <Github className="w-3.5 h-3.5" />
-                View Source
-                <ExternalLink className="w-2.5 h-2.5" />
-              </a>
+                <a
+                  href="https://github.com/natanim-kemal/rem"
+                  className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
+                >
+                  <Github className="w-3.5 h-3.5" />
+                  View Source
+                  <ExternalLink className="w-2.5 h-2.5" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -198,7 +202,7 @@ const GetStarted = () => {
               rem is completely open-source. You can inspect the code, contribute features, report bugs, or fork the project for your own use. We believe in transparency and community-driven development.
             </p>
             <a
-              href="#"
+              href="https://github.com/natanim-kemal/rem"
               className="cta-fill inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-primary text-primary uppercase tracking-[0.15em] text-[0.65rem] font-medium hover:text-primary-foreground transition-colors duration-300"
             >
               <Github className="w-3.5 h-3.5" />
