@@ -9,7 +9,6 @@ const Index = () => {
   const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    // Intersection observer for fade-in elements
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -23,7 +22,6 @@ const Index = () => {
 
     document.querySelectorAll(".observe-fade").forEach((el) => observer.observe(el));
 
-    // Highlight observer for center-of-screen focus
     const highlightObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -39,7 +37,6 @@ const Index = () => {
 
     document.querySelectorAll("[data-highlight]").forEach((el) => highlightObserver.observe(el));
 
-    // Scroll parallax
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const heroHeight = heroRef.current?.offsetHeight || window.innerHeight;
@@ -71,7 +68,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* ========== HERO ========== */}
       <section
         ref={heroRef}
         className="relative w-full min-h-dvh flex flex-col overflow-hidden noise-overlay hero-orbs"
@@ -85,7 +81,6 @@ const Index = () => {
           `,
         }}
       >
-        {/* Grid crosshairs */}
         <div className="absolute inset-0 pointer-events-none z-[2] hidden md:block">
           <div className="crosshair" style={{ top: 133, left: "4rem" }} />
           <div className="crosshair" style={{ top: 133, right: "40%", transform: "translateX(50%)" }} />
@@ -94,10 +89,8 @@ const Index = () => {
           <div className="crosshair" style={{ bottom: 133, right: "4rem" }} />
         </div>
 
-        {/* Dimmer overlay */}
         <div ref={heroDimmerRef} className="absolute inset-0 bg-background opacity-0 z-[3] pointer-events-none" />
 
-        {/* ===== NAV ===== */}
         <header className="relative z-10 flex justify-between items-center px-6 lg:px-12 py-6 w-full">
           <div className="flex items-center gap-2" style={{ fontFamily: "var(--font-heading)" }}>
             <img src={iconSrc} alt="rem logo" className="w-6 h-6" />
@@ -138,19 +131,16 @@ const Index = () => {
           </div>
         </header>
 
-        {/* ===== HERO CONTENT — CENTERED STACKED LAYOUT ===== */}
         <div
           ref={heroContentRef}
           className="relative z-[5] flex-grow flex flex-col items-center justify-center px-6 lg:px-12 gap-6 lg:gap-8 text-center pb-12"
         >
-          {/* Animated badge */}
           <div className="opacity-0 animate-fade-in-up animation-delay-100">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/[0.08] text-primary text-[0.65rem] font-semibold tracking-widest uppercase">
               <span className="animate-pulse">✦</span> Your content, remembered
             </span>
           </div>
 
-          {/* Headline */}
           <h1
             className="opacity-0 animate-fade-in-up animation-delay-200 text-foreground leading-[0.9] tracking-tight max-w-3xl"
             style={{
@@ -166,13 +156,11 @@ const Index = () => {
             vault.
           </h1>
 
-          {/* Body text */}
           <p className="opacity-0 animate-fade-in-up animation-delay-300 text-muted-foreground text-sm max-w-lg leading-relaxed font-light">
             Stop letting saved links become digital graveyards. rem turns your "read later" list into a "read now" habit
             with smart reminders and beautiful organization.
           </p>
 
-          {/* CTA Button */}
           <div className="opacity-0 animate-fade-in-up animation-delay-400">
             <a
               href="#join"
@@ -182,12 +170,9 @@ const Index = () => {
               <ArrowRight className="w-3.5 h-3.5" />
             </a>
           </div>
-
-          {/* Hero visual */}
         </div>
       </section>
 
-      {/* ========== FEATURES ========== */}
       <section
         id="features"
         ref={featuresRef}
@@ -248,7 +233,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ========== QUOTE ========== */}
       <section
         className="mx-3 mb-3 rounded-xl border border-border overflow-hidden flex items-center justify-center text-center py-28 px-6"
         style={{
@@ -272,10 +256,8 @@ const Index = () => {
         </blockquote>
       </section>
 
-      {/* ========== SHOWCASE / HOW IT WORKS ========== */}
       <section id="schedule" className="mx-3 mb-3 rounded-xl overflow-hidden py-24 px-6 lg:px-12">
         <div className="flex flex-col md:flex-row items-center gap-12 max-w-4xl mx-auto">
-          {/* Visual mockup */}
           <div className="flex-[1.5] w-full observe-fade">
             <div className="w-full aspect-[16/10] rounded-lg border border-border bg-gradient-to-br from-secondary to-background shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex items-center justify-center relative overflow-hidden">
               <div className="absolute bg-primary/10" style={{ top: "30%", left: 0, width: "100%", height: 1 }} />
@@ -286,7 +268,6 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Steps */}
           <div className="flex-1 observe-fade">
             <span className="text-primary uppercase tracking-[0.2em] text-[0.65rem] font-semibold block mb-3">
               How It Works
@@ -320,7 +301,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ========== CTA ========== */}
       <section
         id="join"
         className="mx-3 mb-3 rounded-xl text-center py-24 px-6 relative overflow-hidden"
@@ -346,7 +326,6 @@ const Index = () => {
         </a>
       </section>
 
-      {/* ========== FOOTER ========== */}
       <footer className="relative mx-3 mb-3 rounded-xl bg-card overflow-hidden px-6 lg:px-12 pt-12 pb-48">
         <div className="relative z-[1] flex flex-col md:flex-row justify-between items-start flex-wrap gap-10 max-w-4xl mx-auto">
           <div>
