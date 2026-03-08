@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import iconSrc from "@/assets/icon.png";
 import { ArrowRight, Upload, Archive, Clock } from "lucide-react";
 
@@ -119,15 +120,15 @@ const Index = () => {
           </nav>
 
           <div className="flex items-center gap-6 text-xs font-medium">
-            <a
-              href="#join"
+            <Link
+              to="/get-started"
               className="flex items-center gap-2 sm:bg-foreground/[0.08] sm:pl-1 sm:pr-4 sm:py-1 rounded-full sm:border sm:border-foreground/10 font-semibold sm:hover:bg-foreground/[0.15] sm:hover:border-foreground/30 hover:-translate-y-0.5 transition-all duration-300 group"
             >
               <div className="w-7 h-7 bg-primary rounded-full flex items-center justify-center text-primary-foreground shrink-0 group-hover:-rotate-45 transition-transform duration-300">
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
               <span className="hidden sm:inline">Get Started</span>
-            </a>
+            </Link>
           </div>
         </header>
 
@@ -162,13 +163,13 @@ const Index = () => {
           </p>
 
           <div className="opacity-0 animate-fade-in-up animation-delay-400">
-            <a
-              href="#join"
+            <Link
+              to="/get-started"
               className="btn-shimmer inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-xs tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300"
             >
               Start Building Your Habit
               <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
