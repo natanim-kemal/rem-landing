@@ -164,22 +164,24 @@ const GetStarted = () => {
                 ))}
               </div>
 
-              <a
-                href="#"
-                className="btn-shimmer inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-semibold text-xs tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300"
-              >
-                <Download className="w-3.5 h-3.5" />
-                Download Extension
-              </a>
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="https://github.com/natanim-kemal/rem"
+                  className="btn-shimmer inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-semibold text-xs tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  Download Extension
+                </a>
 
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 ml-3 text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
-              >
-                <Github className="w-3.5 h-3.5" />
-                View Source
-                <ExternalLink className="w-2.5 h-2.5" />
-              </a>
+                <a
+                  href="https://github.com/natanim-kemal/rem"
+                  className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
+                >
+                  <Github className="w-3.5 h-3.5" />
+                  View Source
+                  <ExternalLink className="w-2.5 h-2.5" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
