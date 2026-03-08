@@ -365,7 +365,7 @@ const Index = () => {
         <div className="relative z-[1] flex flex-col md:flex-row justify-between items-start flex-wrap gap-12 max-w-5xl mx-auto">
           <div>
             <h5
-              className="text-2xl text-foreground mb-3 lowercase font-semibold tracking-tight"
+              className="text-2xl text-foreground mb-3 lowercase font-medium tracking-tight"
               style={{ fontFamily: "var(--font-heading)" }}>
               
               rem
