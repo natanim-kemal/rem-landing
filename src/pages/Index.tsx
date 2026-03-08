@@ -104,7 +104,7 @@ const Index = () => {
         <header className="relative z-10 flex justify-between items-center px-8 lg:px-16 py-8 w-full">
           <div className="flex items-center gap-3" style={{ fontFamily: "var(--font-heading)" }}>
             <img src={iconSrc} alt="rem logo" className="w-8 h-8" />
-            <span className="text-2xl font-semibold tracking-tight text-foreground">rem</span>
+            <span className="text-2xl font-medium tracking-tight text-foreground">rem</span>
           </div>
 
           <nav className="absolute left-1/2 -translate-x-1/2 hidden md:flex gap-8 bg-foreground/[0.04] backdrop-blur-xl px-10 py-3 rounded-full border border-foreground/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
