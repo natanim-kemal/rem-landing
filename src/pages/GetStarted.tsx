@@ -47,9 +47,12 @@ const GetStarted = () => {
   const latestRelease = releases?.[0];
   const apkAsset = latestRelease?.assets?.find(a => a.name.endsWith(".apk"));
   const extensionAsset = latestRelease?.assets?.find(a => a.name.endsWith(".zip") || a.name.includes("extension"));
-  
+
   const formatSize = (bytes: number) => {
     if (!bytes) return "";
+    if (bytes < 1024 * 1024) {
+      return (bytes / 1024).toFixed(0) + "KB";
+    }
     return (bytes / (1024 * 1024)).toFixed(1) + "MB";
   };
 
@@ -109,14 +112,14 @@ const GetStarted = () => {
 
         {latestRelease && (
           <div className="opacity-0 animate-fade-in-up animation-delay-400 mt-10">
-            <a 
+            <a
               href={latestRelease.html_url}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-foreground/[0.03] text-muted-foreground text-[0.7rem] hover:border-primary/40 hover:text-foreground transition-all duration-300"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              Latest version: <span className="text-foreground font-bold">{latestRelease.tag_name}</span> 
+              Latest version: <span className="text-foreground font-bold">{latestRelease.tag_name}</span>
               <span className="opacity-40">•</span>
               Released {formatDate(latestRelease.published_at)}
             </a>
@@ -163,10 +166,10 @@ const GetStarted = () => {
                 ))}
               </div>
 
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <a
                   href={apkAsset?.browser_download_url || "https://github.com/natanim-kemal/rem/releases/latest"}
-                  className={`btn-shimmer inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-xs tracking-wide transition-all duration-300 ${apkAsset ? 'bg-primary text-primary-foreground hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5' : 'bg-muted text-muted-foreground cursor-not-allowed opacity-70'}`}
+                  className={`btn-shimmer inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-semibold text-xs tracking-wide transition-all duration-300 ${apkAsset ? 'bg-primary text-primary-foreground hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5' : 'bg-muted text-muted-foreground cursor-not-allowed opacity-70'}`}
                 >
                   {isLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Download className="w-3.5 h-3.5" />}
                   Download APK {apkAsset && <span className="opacity-60 font-black ml-1">({formatSize(apkAsset.size)})</span>}
@@ -176,7 +179,7 @@ const GetStarted = () => {
                   href="https://github.com/natanim-kemal/rem"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-border bg-foreground/[0.03] text-xs text-muted-foreground hover:text-primary hover:border-primary/40 transition-all duration-300 sm:px-0 sm:py-0 sm:rounded-none sm:border-none sm:bg-transparent sm:justify-start"
                 >
                   <Github className="w-3.5 h-3.5" />
                   View Source
@@ -223,10 +226,10 @@ const GetStarted = () => {
                 ))}
               </div>
 
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <a
                   href={extensionAsset?.browser_download_url || "https://github.com/natanim-kemal/rem/releases/latest"}
-                  className={`btn-shimmer inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-xs tracking-wide transition-all duration-300 ${extensionAsset ? 'bg-primary text-primary-foreground hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5' : 'bg-muted text-muted-foreground cursor-not-allowed opacity-70'}`}
+                  className={`btn-shimmer inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-semibold text-xs tracking-wide transition-all duration-300 ${extensionAsset ? 'bg-primary text-primary-foreground hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5' : 'bg-muted text-muted-foreground cursor-not-allowed opacity-70'}`}
                 >
                   {isLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Download className="w-3.5 h-3.5" />}
                   Download Extension {extensionAsset && <span className="opacity-60 font-black ml-1">({formatSize(extensionAsset.size)})</span>}
@@ -236,7 +239,7 @@ const GetStarted = () => {
                   href="https://github.com/natanim-kemal/rem"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-border bg-foreground/[0.03] text-xs text-muted-foreground hover:text-primary hover:border-primary/40 transition-all duration-300 sm:px-0 sm:py-0 sm:rounded-none sm:border-none sm:bg-transparent sm:justify-start"
                 >
                   <Github className="w-3.5 h-3.5" />
                   View Source
