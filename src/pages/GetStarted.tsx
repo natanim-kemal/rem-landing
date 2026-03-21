@@ -1,9 +1,34 @@
 import { useEffect } from "react";
 import iconSrc from "@/assets/icon.png";
-import { ArrowLeft, Smartphone, Globe, Download, ExternalLink, Github, ChevronRight, Puzzle, MonitorSmartphone } from "lucide-react";
+import { ArrowLeft, Smartphone, Globe, Download, ExternalLink, Github, ChevronRight, Puzzle, MonitorSmartphone, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+
+interface ReleaseAsset {
+  name: string;
+  browser_download_url: string;
+  size: number;
+}
+
+interface Release {
+  tag_name: string;
+  name: string;
+  published_at: string;
+  assets: ReleaseAsset[];
+  html_url: string;
+}
 
 const GetStarted = () => {
+  const { data: releases, isLoading } = useQuery<Release[]>({
+    queryKey: ["github-releases"],
+    queryFn: async () => {
+      const response = await fetch("https://api.github.com/repos/natanim-kemal/rem/releases");
+      if (!response.ok) throw new Error("Failed to fetch releases");
+      return response.json();
+    },
+    staleTime: 1000 * 60 * 10, // 10 minutes
+  });
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -18,6 +43,23 @@ const GetStarted = () => {
     document.querySelectorAll(".observe-fade").forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
+
+  const latestRelease = releases?.[0];
+  const apkAsset = latestRelease?.assets?.find(a => a.name.endsWith(".apk"));
+  const extensionAsset = latestRelease?.assets?.find(a => a.name.endsWith(".zip") || a.name.includes("extension"));
+  
+  const formatSize = (bytes: number) => {
+    if (!bytes) return "";
+    return (bytes / (1024 * 1024)).toFixed(1) + "MB";
+  };
+
+  const formatDate = (dateStr: string) => {
+    return new Date(dateStr).toLocaleDateString(undefined, {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -64,6 +106,22 @@ const GetStarted = () => {
         <p className="opacity-0 animate-fade-in-up animation-delay-300 text-muted-foreground text-sm max-w-md mx-auto">
           rem is fully open-source. Grab the Android app or browser extension and start building your reading habit today.
         </p>
+
+        {latestRelease && (
+          <div className="opacity-0 animate-fade-in-up animation-delay-400 mt-10">
+            <a 
+              href={latestRelease.html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-foreground/[0.03] text-muted-foreground text-[0.7rem] hover:border-primary/40 hover:text-foreground transition-all duration-300"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              Latest version: <span className="text-foreground font-bold">{latestRelease.tag_name}</span> 
+              <span className="opacity-40">•</span>
+              Released {formatDate(latestRelease.published_at)}
+            </a>
+          </div>
+        )}
       </section>
 
       <section className="py-16 px-6 lg:px-12">
@@ -96,7 +154,7 @@ const GetStarted = () => {
                   "Open the downloaded APK and tap Install",
                   "Launch rem and start saving content",
                 ].map((step, i) => (
-                  <div key={i} className="flex items-start gap-3">
+                  <div key={`android-step-${i}`} className="flex items-start gap-3">
                     <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-[0.65rem] font-semibold flex items-center justify-center mt-0.5">
                       {i + 1}
                     </span>
@@ -107,15 +165,17 @@ const GetStarted = () => {
 
               <div className="flex flex-wrap items-center gap-3">
                 <a
-                  href="https://github.com/natanim-kemal/rem"
-                  className="btn-shimmer inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-semibold text-xs tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300"
+                  href={apkAsset?.browser_download_url || "https://github.com/natanim-kemal/rem/releases/latest"}
+                  className={`btn-shimmer inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-xs tracking-wide transition-all duration-300 ${apkAsset ? 'bg-primary text-primary-foreground hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5' : 'bg-muted text-muted-foreground cursor-not-allowed opacity-70'}`}
                 >
-                  <Download className="w-3.5 h-3.5" />
-                  Download APK
+                  {isLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Download className="w-3.5 h-3.5" />}
+                  Download APK {apkAsset && <span className="opacity-60 font-black ml-1">({formatSize(apkAsset.size)})</span>}
                 </a>
 
                 <a
                   href="https://github.com/natanim-kemal/rem"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
                 >
                   <Github className="w-3.5 h-3.5" />
@@ -154,7 +214,7 @@ const GetStarted = () => {
                   "Click \"Load unpacked\" and select the extracted folder",
                   "Pin the rem icon and start saving content",
                 ].map((step, i) => (
-                  <div key={i} className="flex items-start gap-3">
+                  <div key={`ext-step-${i}`} className="flex items-start gap-3">
                     <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-[0.65rem] font-semibold flex items-center justify-center mt-0.5">
                       {i + 1}
                     </span>
@@ -165,15 +225,17 @@ const GetStarted = () => {
 
               <div className="flex flex-wrap items-center gap-3">
                 <a
-                  href="https://github.com/natanim-kemal/rem"
-                  className="btn-shimmer inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-semibold text-xs tracking-wide hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5 transition-all duration-300"
+                  href={extensionAsset?.browser_download_url || "https://github.com/natanim-kemal/rem/releases/latest"}
+                  className={`btn-shimmer inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-xs tracking-wide transition-all duration-300 ${extensionAsset ? 'bg-primary text-primary-foreground hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5' : 'bg-muted text-muted-foreground cursor-not-allowed opacity-70'}`}
                 >
-                  <Download className="w-3.5 h-3.5" />
-                  Download Extension
+                  {isLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Download className="w-3.5 h-3.5" />}
+                  Download Extension {extensionAsset && <span className="opacity-60 font-black ml-1">({formatSize(extensionAsset.size)})</span>}
                 </a>
 
                 <a
                   href="https://github.com/natanim-kemal/rem"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
                 >
                   <Github className="w-3.5 h-3.5" />
@@ -202,6 +264,8 @@ const GetStarted = () => {
             </p>
             <a
               href="https://github.com/natanim-kemal/rem"
+              target="_blank"
+              rel="noopener noreferrer"
               className="cta-fill inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-primary text-primary uppercase tracking-[0.15em] text-[0.65rem] font-medium hover:text-primary-foreground transition-colors duration-300"
             >
               <Github className="w-3.5 h-3.5" />
@@ -222,3 +286,4 @@ const GetStarted = () => {
 };
 
 export default GetStarted;
+
