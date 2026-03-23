@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import iconSrc from "@/assets/icon.png";
-import { ArrowLeft, Smartphone, Globe, Download, ExternalLink, Github, ChevronRight, Puzzle, MonitorSmartphone, Loader2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Smartphone, Globe, Download, ExternalLink, Github, ChevronRight, Puzzle, MonitorSmartphone, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
@@ -82,10 +82,22 @@ const GetStarted = () => {
           </Link>
           <Link
             to="/"
-            className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
+            // @ts-ignore
+            unstable_viewTransition
+            className="flex items-center gap-2 sm:bg-foreground/[0.08] sm:pl-4 sm:pr-1 sm:py-1 rounded-full sm:border sm:border-foreground/10 font-semibold sm:hover:bg-foreground/[0.15] sm:hover:border-foreground/30 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 flex-row-reverse group"
           >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            Back to Home
+            <div 
+              className="w-7 h-7 bg-primary rounded-full flex items-center justify-center text-primary-foreground shrink-0 transition-transform duration-300"
+              style={{ viewTransitionName: 'header-icon' }}
+            >
+              <ArrowRight className="w-3.5 h-3.5 rotate-180" />
+            </div>
+            <span 
+              className="hidden sm:inline text-xs"
+              style={{ viewTransitionName: 'header-text' }}
+            >
+              Back
+            </span>
           </Link>
         </nav>
         <div className="opacity-0 animate-fade-in-up animation-delay-100">
