@@ -122,12 +122,22 @@ const Index = () => {
           <div className="flex items-center gap-6 text-xs font-medium">
             <Link
               to="/get-started"
-              className="flex items-center gap-2 sm:bg-foreground/[0.08] sm:pl-1 sm:pr-4 sm:py-1 rounded-full sm:border sm:border-foreground/10 font-semibold sm:hover:bg-foreground/[0.15] sm:hover:border-foreground/30 hover:-translate-y-0.5 transition-all duration-300 group"
+              // @ts-ignore
+              unstable_viewTransition
+              className="flex items-center gap-2 sm:bg-foreground/[0.08] sm:pl-1 sm:pr-4 sm:py-1 rounded-full sm:border sm:border-foreground/10 font-semibold sm:hover:bg-foreground/[0.15] sm:hover:border-foreground/30 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 group"
             >
-              <div className="w-7 h-7 bg-primary rounded-full flex items-center justify-center text-primary-foreground shrink-0 group-hover:-rotate-45 transition-transform duration-300">
+              <div 
+                className="w-7 h-7 bg-primary rounded-full flex items-center justify-center text-primary-foreground shrink-0 transition-transform duration-300"
+                style={{ viewTransitionName: 'header-icon' }}
+              >
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
-              <span className="hidden sm:inline">Get Started</span>
+              <span 
+                className="hidden sm:inline"
+                style={{ viewTransitionName: 'header-text' }}
+              >
+                Get Started
+              </span>
             </Link>
           </div>
         </header>
