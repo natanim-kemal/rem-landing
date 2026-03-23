@@ -249,3 +249,13 @@
   pointer-events: none;
   z-index: 0;
 }
+
+/* View Transitions */
+::view-transition-old(header-icon),
+::view-transition-new(header-icon),
+::view-transition-old(header-text),
+::view-transition-new(header-text) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
