@@ -96,7 +96,7 @@ const GetStarted = () => {
               className="hidden sm:inline text-xs"
               style={{ viewTransitionName: 'header-text' }}
             >
-              Back
+              Back home
             </span>
           </Link>
         </nav>
