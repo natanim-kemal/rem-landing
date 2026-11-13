@@ -82,7 +82,7 @@ const GetStarted = () => {
           </Link>
           <Link
             to="/"
-            // @ts-ignore
+            // @ts-expect-error -- react-router-dom types don't expose unstable_viewTransition
             unstable_viewTransition
             className="flex items-center gap-2 sm:bg-foreground/[0.08] sm:pl-4 sm:pr-1 sm:py-1 rounded-full sm:border sm:border-foreground/10 font-semibold sm:hover:bg-foreground/[0.15] sm:hover:border-foreground/30 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 flex-row-reverse group"
           >
@@ -159,7 +159,7 @@ const GetStarted = () => {
                 Android App
               </h2>
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                Install the APK directly on your Android device. No Play Store needed — just download, enable unknown sources, and install.
+                Install the APK directly on your Android device. No Play Store needed, just download, enable unknown sources, and install.
               </p>
 
               <div className="space-y-3 mb-8">
@@ -167,7 +167,7 @@ const GetStarted = () => {
                   "Download the APK file below",
                   "Open Settings → Security → Enable \"Unknown Sources\"",
                   "Open the downloaded APK and tap Install",
-                  "Launch rem and start saving content",
+                  "Launch rem, with saving, reading, reminders and AI chat in your pocket",
                 ].map((step, i) => (
                   <div key={`android-step-${i}`} className="flex items-start gap-3">
                     <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-[0.65rem] font-semibold flex items-center justify-center mt-0.5">
@@ -219,7 +219,7 @@ const GetStarted = () => {
                 Browser Extension
               </h2>
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                Save articles, videos, and links directly from your browser with one click. Works with Chrome, Edge, and other Chromium-based browsers.
+                Save articles, videos, and links directly from your browser with one click or Ctrl+Shift+S. Works with Chrome, Edge, and other Chromium-based browsers.
               </p>
 
               <div className="space-y-3 mb-8">
