@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import iconSrc from "@/assets/icon.png";
-import { ArrowRight, Upload, Archive, Clock } from "lucide-react";
+import { ArrowRight, Upload, Archive, Clock, Sparkles, Flame, WifiOff } from "lucide-react";
 
 const Index = () => {
   const featuresRef = useRef<HTMLElement>(null);
@@ -84,8 +84,11 @@ const Index = () => {
       >
         <div className="absolute inset-0 pointer-events-none z-[2] hidden md:block">
           <div className="crosshair" style={{ top: 133, left: "4rem" }} />
+          <div className="crosshair" style={{ top: 133, left: "40%", transform: "translateX(-50%)" }} />
           <div className="crosshair" style={{ top: 133, right: "40%", transform: "translateX(50%)" }} />
           <div className="crosshair" style={{ top: 133, right: "4rem" }} />
+          <div className="crosshair" style={{ bottom: 133, left: "4rem" }} />
+          <div className="crosshair" style={{ bottom: 133, left: "40%", transform: "translateX(-50%)" }} />
           <div className="crosshair" style={{ bottom: 133, right: "40%", transform: "translateX(50%)" }} />
           <div className="crosshair" style={{ bottom: 133, right: "4rem" }} />
         </div>
@@ -122,7 +125,7 @@ const Index = () => {
           <div className="flex items-center gap-6 text-xs font-medium">
             <Link
               to="/get-started"
-              // @ts-ignore
+              // @ts-expect-error -- react-router-dom types don't expose unstable_viewTransition
               unstable_viewTransition
               className="flex items-center gap-2 sm:bg-foreground/[0.08] sm:pl-1 sm:pr-4 sm:py-1 rounded-full sm:border sm:border-foreground/10 font-semibold sm:hover:bg-foreground/[0.15] sm:hover:border-foreground/30 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 group"
             >
@@ -147,8 +150,11 @@ const Index = () => {
           className="relative z-[5] flex-grow flex flex-col items-center justify-center px-6 lg:px-12 gap-6 lg:gap-8 text-center pb-12"
         >
           <div className="opacity-0 animate-fade-in-up animation-delay-100">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/[0.08] text-primary text-[0.65rem] font-semibold tracking-widest uppercase">
-              <span className="animate-pulse">✦</span> Your content, remembered
+            <span
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/[0.08] text-primary text-[0.65rem] font-semibold tracking-widest uppercase"
+              style={{ transform: "scale(0.7)" }}
+            >
+              <Sparkles className="w-3 h-3 animate-pulse" /> Your content, remembered
             </span>
           </div>
 
@@ -169,7 +175,7 @@ const Index = () => {
 
           <p className="opacity-0 animate-fade-in-up animation-delay-300 text-muted-foreground text-sm max-w-lg leading-relaxed font-light">
             Stop letting saved links become digital graveyards. rem turns your "read later" list into a "read now" habit
-            with smart reminders and beautiful organization.
+            with smart reminders, AI answers, and beautiful organization.
           </p>
 
           <div className="opacity-0 animate-fade-in-up animation-delay-400">
@@ -213,17 +219,32 @@ const Index = () => {
               {
                 icon: <Upload className="w-5 h-5" />,
                 title: "Save From Anywhere",
-                text: "Share links, images, or text directly to rem from any app. Works with your browser, social feeds, and messaging apps.",
+                text: "Share links, images, or text straight to rem from any Android app, or save pages from the Chrome extension in one click.",
               },
               {
                 icon: <Archive className="w-5 h-5" />,
                 title: "Personal Queue",
-                text: "Everything you save appears in one clean, scannable list. Rich previews show titles, images, and descriptions instantly.",
+                text: "One clean list with priorities, tags, and instant full-text search. Rich previews show titles and thumbnails instantly.",
               },
               {
                 icon: <Clock className="w-5 h-5" />,
                 title: "Smart Reminders",
-                text: "Set daily or weekly reminders at times that work for you. rem learns your habits and suggests the perfect moment to catch up.",
+                text: "High, medium and low items remind you 3, 2 and 1 times a day. Snooze 30 minutes from the notification.",
+              },
+              {
+                icon: <Sparkles className="w-5 h-5" />,
+                title: "AI Answers",
+                text: "Ask questions about any saved item. Streamed answers grounded in the article's text, optional web search and 8 free models.",
+              },
+              {
+                icon: <Flame className="w-5 h-5" />,
+                title: "Streaks & Stats",
+                text: "Daily streaks, minutes read, and completion rates across 24h to 365d. Finishing beats opening.",
+              },
+              {
+                icon: <WifiOff className="w-5 h-5" />,
+                title: "Offline First",
+                text: "Your whole vault works offline, in a tunnel, on a plane. Changes sync when you're back. Last write wins, always.",
               },
             ].map((feature, i) => (
               <div
@@ -270,12 +291,14 @@ const Index = () => {
       <section id="schedule" className="mx-3 mb-3 rounded-xl overflow-hidden py-24 px-6 lg:px-12">
         <div className="flex flex-col md:flex-row items-center gap-12 max-w-4xl mx-auto">
           <div className="flex-[1.5] w-full observe-fade">
-            <div className="w-full aspect-[16/10] rounded-lg border border-border bg-gradient-to-br from-secondary to-background shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex items-center justify-center relative overflow-hidden">
-              <div className="absolute bg-primary/10" style={{ top: "30%", left: 0, width: "100%", height: 1 }} />
-              <div className="absolute bg-primary/10" style={{ left: "30%", top: 0, width: 1, height: "100%" }} />
-              <span className="text-foreground/70 text-lg" style={{ fontFamily: "var(--font-heading)" }}>
-                READING LIST
-              </span>
+            <div className="w-full h-[340px] overflow-hidden rounded-lg border border-primary/15 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+              <iframe
+                src="/board.html"
+                title="rem — wall of saved items"
+                loading="lazy"
+                className="origin-top-left border-0"
+                style={{ width: "153%", height: "520px", transform: "scale(0.6538)" }}
+              />
             </div>
           </div>
 
@@ -291,16 +314,14 @@ const Index = () => {
             </h2>
 
             {[
-              { title: "Capture", desc: "See something interesting? Tap share and choose rem.", active: true },
+              { title: "Capture", desc: "See something interesting? Tap share and choose rem." },
               { title: "Consume", desc: "Get nudged at the right time. Snooze if busy, or dive in." },
               { title: "Track", desc: "Watch your stats grow as you clear your queue and build streaks." },
             ].map((step, i) => (
               <div
                 key={i}
                 data-highlight
-                className={`mb-6 pl-5 border-l-2 transition-colors duration-300 ${
-                  step.active ? "border-primary" : "border-border"
-                }`}
+                className="how-step mb-6 pl-5 border-l-2 border-border"
               >
                 <h4 className="text-base text-foreground mb-1" style={{ fontFamily: "var(--font-heading)" }}>
                   {step.title}
@@ -352,25 +373,25 @@ const Index = () => {
           <div className="flex gap-12">
             <div className="flex flex-col gap-2">
               <span className="text-foreground font-semibold text-xs">Engineering</span>
-              <a href="#" className="text-muted-foreground text-xs hover:text-primary transition-colors">
+              <a href="https://github.com/natanim-kemal/rem/blob/main/docs/02-ARCHITECTURE.md" target="_blank" rel="noopener noreferrer" className="text-muted-foreground text-xs hover:text-primary transition-colors">
                 Architecture
               </a>
-              <a href="#" className="text-muted-foreground text-xs hover:text-primary transition-colors">
+              <a href="https://github.com/natanim-kemal/rem/blob/main/docs/03-CICD.md" target="_blank" rel="noopener noreferrer" className="text-muted-foreground text-xs hover:text-primary transition-colors">
                 CI/CD Pipeline
               </a>
-              <a href="#" className="text-muted-foreground text-xs hover:text-primary transition-colors">
+              <a href="https://github.com/natanim-kemal/rem/blob/main/docs/06-REPOSITORY-SETUP.md" target="_blank" rel="noopener noreferrer" className="text-muted-foreground text-xs hover:text-primary transition-colors">
                 Repository Setup
               </a>
             </div>
             <div className="flex flex-col gap-2">
               <span className="text-foreground font-semibold text-xs">Standards</span>
-              <a href="#" className="text-muted-foreground text-xs hover:text-primary transition-colors">
+              <a href="https://github.com/natanim-kemal/rem/blob/main/docs/04-SECURITY.md" target="_blank" rel="noopener noreferrer" className="text-muted-foreground text-xs hover:text-primary transition-colors">
                 Security Guidelines
               </a>
-              <a href="#" className="text-muted-foreground text-xs hover:text-primary transition-colors">
+              <a href="https://github.com/natanim-kemal/rem/blob/main/docs/05-DEVELOPMENT-STANDARDS.md" target="_blank" rel="noopener noreferrer" className="text-muted-foreground text-xs hover:text-primary transition-colors">
                 Development Standards
               </a>
-              <a href="#" className="text-muted-foreground text-xs hover:text-primary transition-colors">
+              <a href="https://github.com/natanim-kemal/rem/blob/main/docs/01-PRD.md" target="_blank" rel="noopener noreferrer" className="text-muted-foreground text-xs hover:text-primary transition-colors">
                 Product Requirements
               </a>
             </div>
