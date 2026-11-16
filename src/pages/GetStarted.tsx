@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import iconSrc from "@/assets/icon.png";
+import ThemeToggle from "@/components/ThemeToggle";
 import { ArrowLeft, ArrowRight, Smartphone, Globe, Download, ExternalLink, Github, ChevronRight, Puzzle, MonitorSmartphone, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
@@ -80,25 +81,28 @@ const GetStarted = () => {
             <img src={iconSrc} alt="rem logo" className="w-6 h-6" />
             <span className="text-xl font-semibold tracking-tight text-foreground">rem</span>
           </Link>
-          <Link
-            to="/"
-            // @ts-expect-error -- react-router-dom types don't expose unstable_viewTransition
-            unstable_viewTransition
-            className="flex items-center gap-2 sm:bg-foreground/[0.08] sm:pl-4 sm:pr-1 sm:py-1 rounded-full sm:border sm:border-foreground/10 font-semibold sm:hover:bg-foreground/[0.15] sm:hover:border-foreground/30 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 flex-row-reverse group"
-          >
-            <div 
-              className="w-7 h-7 bg-primary rounded-full flex items-center justify-center text-primary-foreground shrink-0 transition-transform duration-300"
-              style={{ viewTransitionName: 'header-icon' }}
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <Link
+              to="/"
+              // @ts-expect-error -- react-router-dom types don't expose unstable_viewTransition
+              unstable_viewTransition
+              className="flex items-center gap-2 sm:bg-foreground/[0.08] sm:pl-4 sm:pr-1 sm:py-1 rounded-full sm:border sm:border-foreground/10 font-semibold sm:hover:bg-foreground/[0.15] sm:hover:border-foreground/30 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 flex-row-reverse group"
             >
-              <ArrowRight className="w-3.5 h-3.5 rotate-180" />
-            </div>
-            <span 
-              className="hidden sm:inline text-xs"
-              style={{ viewTransitionName: 'header-text' }}
-            >
-              Back home
-            </span>
-          </Link>
+              <div 
+                className="w-7 h-7 bg-primary rounded-full flex items-center justify-center text-primary-foreground shrink-0 transition-transform duration-300"
+                style={{ viewTransitionName: 'header-icon' }}
+              >
+                <ArrowRight className="w-3.5 h-3.5 rotate-180" />
+              </div>
+              <span 
+                className="hidden sm:inline text-xs"
+                style={{ viewTransitionName: 'header-text' }}
+              >
+                Back home
+              </span>
+            </Link>
+          </div>
         </nav>
         <div className="opacity-0 animate-fade-in-up animation-delay-100">
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/[0.08] text-primary text-[0.65rem] font-semibold tracking-widest uppercase mb-6">
@@ -113,7 +117,7 @@ const GetStarted = () => {
           }}
         >
           Download &{" "}
-          <span className="bg-gradient-to-r from-primary to-emerald-300 bg-clip-text text-transparent">
+          <span className="text-gradient">
             Install
           </span>{" "}
           rem
@@ -141,7 +145,7 @@ const GetStarted = () => {
 
       <section className="py-16 px-6 lg:px-12">
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="observe-fade group border border-border rounded-xl p-8 transition-all duration-400 hover:border-primary hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)] relative overflow-hidden">
+          <div className="observe-fade group glass-card lift-card rounded-xl p-8 transition-all duration-400 hover:border-primary relative overflow-hidden">
             <div
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
               style={{
@@ -201,7 +205,7 @@ const GetStarted = () => {
             </div>
           </div>
 
-          <div className="observe-fade group border border-border rounded-xl p-8 transition-all duration-400 hover:border-primary hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)] relative overflow-hidden">
+          <div className="observe-fade group glass-card lift-card rounded-xl p-8 transition-all duration-400 hover:border-primary relative overflow-hidden">
             <div
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
               style={{
@@ -266,7 +270,7 @@ const GetStarted = () => {
       <section className="py-16 px-6 lg:px-12">
         <div className="max-w-4xl mx-auto observe-fade">
           <div className="rounded-xl border border-border p-8" style={{
-            background: "radial-gradient(circle at 50% 100%, hsl(160 82% 15% / 0.3) 0%, transparent 70%)",
+            background: "radial-gradient(circle at 50% 100%, hsl(160 82% 39% / 0.1) 0%, transparent 70%)",
           }}>
             <div className="flex items-center gap-3 mb-6">
               <Globe className="w-5 h-5 text-primary" />
