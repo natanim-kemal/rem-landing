@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import iconSrc from "@/assets/icon.png";
+import ThemeToggle from "@/components/ThemeToggle";
 import { ArrowRight, Upload, Archive, Clock, Sparkles, Flame, WifiOff } from "lucide-react";
 
 const Index = () => {
@@ -71,16 +72,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <section
         ref={heroRef}
-        className="relative w-full min-h-dvh flex flex-col overflow-hidden noise-overlay hero-orbs"
-        style={{
-          backgroundImage: `
-            repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.015) 3px, rgba(255,255,255,0.015) 4px),
-            radial-gradient(at 0% 0%, hsl(160 82% 39% / 0.05) 0px, transparent 50%),
-            radial-gradient(at 100% 0%, hsl(160 82% 39% / 0.03) 0px, transparent 50%),
-            radial-gradient(at 100% 100%, hsl(160 82% 39% / 0.05) 0px, transparent 50%),
-            radial-gradient(at 0% 100%, hsl(160 82% 39% / 0.03) 0px, transparent 50%)
-          `,
-        }}
+        className="relative w-full min-h-dvh flex flex-col overflow-hidden noise-overlay hero-orbs hero-section"
       >
         <div className="absolute inset-0 pointer-events-none z-[2] hidden md:block">
           <div className="crosshair" style={{ top: 133, left: "4rem" }} />
@@ -122,7 +114,8 @@ const Index = () => {
             </a>
           </nav>
 
-          <div className="flex items-center gap-6 text-xs font-medium">
+          <div className="flex items-center gap-4 text-xs font-medium">
+            <ThemeToggle />
             <Link
               to="/get-started"
               // @ts-expect-error -- react-router-dom types don't expose unstable_viewTransition
@@ -159,15 +152,14 @@ const Index = () => {
           </div>
 
           <h1
-            className="opacity-0 animate-fade-in-up animation-delay-200 text-foreground leading-[0.9] tracking-tight max-w-3xl"
+            className="opacity-0 animate-fade-in-up animation-delay-200 text-foreground leading-[0.9] tracking-tight max-w-3xl hero-title"
             style={{
               fontFamily: "var(--font-heading)",
               fontSize: "clamp(2rem, 5vw, 4rem)",
-              textShadow: "0 4px 20px rgba(0,0,0,0.8)",
             }}
           >
             Intelligent{" "}
-            <span className="bg-gradient-to-r from-primary to-emerald-300 bg-clip-text text-transparent">
+            <span className="text-gradient">
               content consumption
             </span>{" "}
             vault.
@@ -193,10 +185,7 @@ const Index = () => {
       <section
         id="features"
         ref={featuresRef}
-        className="relative z-20 opacity-0 rounded-t-[2rem] border-t border-border overflow-hidden"
-        style={{
-          background: "linear-gradient(to bottom, hsl(160 82% 15%), hsl(var(--background)))",
-        }}
+        className="relative z-20 opacity-0 rounded-t-[2rem] border-t border-border overflow-hidden features-section"
       >
         <div className="py-24 px-6 lg:px-12">
           <div className="text-center max-w-lg mx-auto mb-14 observe-fade">
@@ -250,7 +239,7 @@ const Index = () => {
               <div
                 key={i}
                 data-highlight
-                className="observe-fade group border border-border rounded-xl p-7 transition-all duration-400 hover:-translate-y-1 hover:border-primary hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)]"
+                className="observe-fade group glass-card lift-card rounded-xl p-7 transition-all duration-400 hover:-translate-y-1 hover:border-primary"
               >
                 <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary mb-4">
                   {feature.icon}
@@ -266,21 +255,14 @@ const Index = () => {
       </section>
 
       <section
-        className="mx-3 mb-3 rounded-xl border border-border overflow-hidden flex items-center justify-center text-center py-28 px-6"
-        style={{
-          background: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop')`,
-          backgroundAttachment: "fixed",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-        }}
+        className="mx-3 mb-3 rounded-xl border border-border overflow-hidden flex items-center justify-center text-center py-28 px-6 quote-section"
       >
         <blockquote className="max-w-2xl observe-fade">
           <p
-            className="text-foreground italic leading-snug mb-6"
+            className="text-foreground italic leading-snug mb-6 quote-text"
             style={{
               fontFamily: "var(--font-heading)",
               fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)",
-              textShadow: "0 4px 10px rgba(0,0,0,0.5)",
             }}
           >
             "rem respects your time. It doesn't just store links; it guarantees you'll actually enjoy them."
@@ -291,7 +273,7 @@ const Index = () => {
       <section id="schedule" className="mx-3 mb-3 rounded-xl overflow-hidden py-24 px-6 lg:px-12">
         <div className="flex flex-col md:flex-row items-center gap-12 max-w-4xl mx-auto">
           <div className="flex-[1.5] w-full observe-fade">
-            <div className="w-full h-[340px] overflow-hidden rounded-lg border border-primary/15 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+            <div className="w-full h-[340px] overflow-hidden rounded-lg border border-primary/15 mockup-shadow">
               <iframe
                 src="/board.html"
                 title="rem — wall of saved items"
@@ -335,10 +317,7 @@ const Index = () => {
 
       <section
         id="join"
-        className="mx-3 mb-3 rounded-xl text-center py-24 px-6 relative overflow-hidden"
-        style={{
-          background: "radial-gradient(circle at 50% 100%, hsl(160 82% 15%) 0%, hsl(var(--background)) 70%)",
-        }}
+        className="mx-3 mb-3 rounded-xl text-center py-24 px-6 relative overflow-hidden join-section"
       >
         <h2
           className="text-foreground mb-4 observe-fade"
