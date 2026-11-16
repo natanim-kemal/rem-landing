@@ -70,10 +70,7 @@ const GetStarted = () => {
       <section
         className="relative pt-0 pb-20 px-6 lg:px-12 text-center noise-overlay overflow-hidden"
         style={{
-          backgroundImage: `
-            radial-gradient(at 30% 20%, hsl(160 82% 39% / 0.08) 0px, transparent 50%),
-            radial-gradient(at 70% 80%, hsl(160 82% 39% / 0.05) 0px, transparent 50%)
-          `,
+          backgroundImage: "var(--get-started-glow)",
         }}
       >
         <nav className="flex justify-between items-center py-6 mb-14">
@@ -149,7 +146,7 @@ const GetStarted = () => {
             <div
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
               style={{
-                background: "radial-gradient(circle at 50% 0%, hsl(160 82% 39% / 0.06) 0%, transparent 60%)",
+                background: "var(--card-glow)",
               }}
             />
             <div className="relative z-[1]">
@@ -209,7 +206,7 @@ const GetStarted = () => {
             <div
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
               style={{
-                background: "radial-gradient(circle at 50% 0%, hsl(160 82% 39% / 0.06) 0%, transparent 60%)",
+                background: "var(--card-glow)",
               }}
             />
             <div className="relative z-[1]">
@@ -270,7 +267,7 @@ const GetStarted = () => {
       <section className="py-16 px-6 lg:px-12">
         <div className="max-w-4xl mx-auto observe-fade">
           <div className="rounded-xl border border-border p-8" style={{
-            background: "radial-gradient(circle at 50% 100%, hsl(160 82% 39% / 0.1) 0%, transparent 70%)",
+            background: "var(--soft-panel)",
           }}>
             <div className="flex items-center gap-3 mb-6">
               <Globe className="w-5 h-5 text-primary" />
