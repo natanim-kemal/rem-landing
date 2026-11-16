@@ -58,8 +58,8 @@
     --heading-shadow: none;
     --gradient-to: hsl(160 72% 38%);
     --section-top: hsl(0 0% 100%);
-    --quote-overlay: rgba(255, 255, 255, 0.88);
-    --quote-shadow: none;
+    --quote-overlay: rgba(255, 255, 255, 0.45);
+    --quote-shadow: 0 2px 16px rgba(255, 255, 255, 0.95);
     --mockup-shadow: 0 20px 50px rgba(15, 40, 30, 0.14);
     --join-glow: hsl(150 60% 94%);
     --lift-shadow: 0 10px 30px -10px rgba(15, 40, 30, 0.18);
