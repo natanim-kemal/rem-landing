@@ -49,23 +49,25 @@
     --font-heading: 'Clash Display', sans-serif;
     --font-body: 'Archivo', sans-serif;
 
-    --page-glow:
-      radial-gradient(50rem 32rem at 12% -8%, hsl(160 70% 94% / 0.75) 0%, transparent 60%),
-      radial-gradient(45rem 32rem at 92% 6%, hsl(195 80% 95% / 0.65) 0%, transparent 55%);
-    --scanline-color: rgba(15, 40, 30, 0.025);
+    --page-glow: none;
+    --hero-glow: none;
+    --get-started-glow: none;
+    --card-glow: none;
+    --soft-panel: none;
+    --scanline-color: rgba(15, 23, 20, 0.035);
     --heading-shadow: none;
     --gradient-to: hsl(160 72% 38%);
-    --section-top: hsl(150 60% 96%);
+    --section-top: hsl(0 0% 100%);
     --quote-overlay: rgba(255, 255, 255, 0.88);
     --quote-shadow: none;
     --mockup-shadow: 0 20px 50px rgba(15, 40, 30, 0.14);
     --join-glow: hsl(150 60% 94%);
     --lift-shadow: 0 10px 30px -10px rgba(15, 40, 30, 0.18);
-    --footer-giant: hsl(150 45% 92%);
+    --footer-giant: hsl(0 0% 94%);
     --orb-1: hsl(160 70% 68% / 0.35);
     --orb-2: hsl(195 80% 75% / 0.3);
     --orb-vignette: hsl(0 0% 100%);
-    --orb-opacity: 0.9;
+    --orb-opacity: 0;
     --orb-blur: 70px;
     --glass-bg: rgba(255, 255, 255, 0.62);
     --glass-border: rgba(255, 255, 255, 0.8);
@@ -102,6 +104,16 @@
     --sidebar-ring: 160 82% 39%;
 
     --page-glow: none;
+    --hero-glow:
+      radial-gradient(at 0% 0%, hsl(160 82% 39% / 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsl(160 82% 39% / 0.03) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsl(160 82% 39% / 0.05) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsl(160 82% 39% / 0.03) 0px, transparent 50%);
+    --get-started-glow:
+      radial-gradient(at 30% 20%, hsl(160 82% 39% / 0.08) 0px, transparent 50%),
+      radial-gradient(at 70% 80%, hsl(160 82% 39% / 0.05) 0px, transparent 50%);
+    --card-glow: radial-gradient(circle at 50% 0%, hsl(160 82% 39% / 0.06) 0%, transparent 60%);
+    --soft-panel: radial-gradient(circle at 50% 100%, hsl(160 82% 39% / 0.1) 0%, transparent 70%);
     --scanline-color: rgba(255, 255, 255, 0.015);
     --heading-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
     --gradient-to: hsl(158 89% 66%);
@@ -310,10 +322,7 @@
 .hero-section {
   background-image:
     repeating-linear-gradient(0deg, transparent, transparent 3px, var(--scanline-color) 3px, var(--scanline-color) 4px),
-    radial-gradient(at 0% 0%, hsl(160 82% 39% / 0.05) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, hsl(160 82% 39% / 0.03) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, hsl(160 82% 39% / 0.05) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, hsl(160 82% 39% / 0.03) 0px, transparent 50%);
+    var(--hero-glow);
 }
 
 .hero-title { text-shadow: var(--heading-shadow); }
