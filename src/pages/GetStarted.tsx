@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import iconSrc from "@/assets/icon.png";
-import ThemeToggle from "@/components/ThemeToggle";
-import { ArrowLeft, ArrowRight, Smartphone, Globe, Download, ExternalLink, Github, ChevronRight, Puzzle, MonitorSmartphone, Loader2 } from "lucide-react";
+import { ArrowLeft, Download, ExternalLink, Github, Loader2, Puzzle, Smartphone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
@@ -27,27 +26,16 @@ const GetStarted = () => {
       if (!response.ok) throw new Error("Failed to fetch releases");
       return response.json();
     },
-    staleTime: 1000 * 60 * 10, // 10 minutes
+    staleTime: 1000 * 60 * 10,
   });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.1 },
-    );
-    document.querySelectorAll(".observe-fade").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    document.documentElement.classList.remove("dark");
   }, []);
 
   const latestRelease = releases?.[0];
-  const apkAsset = latestRelease?.assets?.find(a => a.name.endsWith(".apk"));
-  const extensionAsset = latestRelease?.assets?.find(a => a.name.endsWith(".zip") || a.name.includes("extension"));
+  const apkAsset = latestRelease?.assets?.find((a) => a.name.endsWith(".apk"));
+  const extensionAsset = latestRelease?.assets?.find((a) => a.name.endsWith(".zip") || a.name.includes("extension"));
 
   const formatSize = (bytes: number) => {
     if (!bytes) return "";
@@ -59,247 +47,124 @@ const GetStarted = () => {
 
   const formatDate = (dateStr: string) => {
     return new Date(dateStr).toLocaleDateString(undefined, {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
+      year: "numeric",
+      month: "short",
+      day: "numeric",
     });
   };
 
-  return (
-    <div className="min-h-screen bg-background">
-      <section
-        className="relative pt-0 pb-20 px-6 lg:px-12 text-center noise-overlay overflow-hidden"
-        style={{
-          backgroundImage: "var(--get-started-glow)",
-        }}
-      >
-        <nav className="flex justify-between items-center py-6 mb-14">
-          <Link to="/" className="flex items-center gap-2" style={{ fontFamily: "var(--font-heading)" }}>
-            <img src={iconSrc} alt="rem logo" className="w-6 h-6" />
-            <span className="text-xl font-semibold tracking-tight text-foreground">rem</span>
-          </Link>
-          <div className="flex items-center gap-3">
-            <ThemeToggle />
-            <Link
-              to="/"
-              // @ts-expect-error -- react-router-dom types don't expose unstable_viewTransition
-              unstable_viewTransition
-              className="flex items-center gap-2 sm:bg-foreground/[0.08] sm:pl-4 sm:pr-1 sm:py-1 rounded-full sm:border sm:border-foreground/10 font-semibold sm:hover:bg-foreground/[0.15] sm:hover:border-foreground/30 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 flex-row-reverse group"
-            >
-              <div 
-                className="w-7 h-7 bg-primary rounded-full flex items-center justify-center text-primary-foreground shrink-0 transition-transform duration-300"
-                style={{ viewTransitionName: 'header-icon' }}
-              >
-                <ArrowRight className="w-3.5 h-3.5 rotate-180" />
-              </div>
-              <span 
-                className="hidden sm:inline text-xs"
-                style={{ viewTransitionName: 'header-text' }}
-              >
-                Back home
-              </span>
-            </Link>
-          </div>
-        </nav>
-        <div className="opacity-0 animate-fade-in-up animation-delay-100">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/[0.08] text-primary text-[0.65rem] font-semibold tracking-widest uppercase mb-6">
-            <MonitorSmartphone className="w-3 h-3" /> Get Started
-          </span>
-        </div>
-        <h1
-          className="opacity-0 animate-fade-in-up animation-delay-200 text-foreground leading-[0.95] tracking-tight max-w-2xl mx-auto mb-4"
-          style={{
-            fontFamily: "var(--font-heading)",
-            fontSize: "clamp(1.75rem, 4vw, 3rem)",
-          }}
-        >
-          Download &{" "}
-          <span className="text-gradient">
-            Install
-          </span>{" "}
-          rem
-        </h1>
-        <p className="opacity-0 animate-fade-in-up animation-delay-300 text-muted-foreground text-sm max-w-md mx-auto">
-          rem is fully open-source. Grab the Android app or browser extension and start building your reading habit today.
-        </p>
+  const cards = [
+    {
+      icon: Smartphone,
+      title: "Android app",
+      copy: "Install the APK straight on your phone. No Play Store, no account, no gatekeeping.",
+      steps: [
+        "Download the APK below",
+        "Enable install from unknown sources",
+        "Open the file and tap Install",
+        "Sign in and start saving",
+      ],
+      asset: apkAsset,
+      href: apkAsset?.browser_download_url || "https://github.com/natanim-kemal/rem/releases/latest",
+      label: "Download APK",
+    },
+    {
+      icon: Puzzle,
+      title: "Browser extension",
+      copy: "Save the page you are on with one click, or Ctrl + Shift + S. Works in Chrome, Edge and Brave.",
+      steps: [
+        "Download the extension ZIP",
+        "Open chrome://extensions and enable Developer mode",
+        "Choose Load unpacked and pick the folder",
+        "Pin rem to your toolbar",
+      ],
+      asset: extensionAsset,
+      href: extensionAsset?.browser_download_url || "https://github.com/natanim-kemal/rem/releases/latest",
+      label: "Download extension",
+    },
+  ];
 
-        {latestRelease && (
-          <div className="opacity-0 animate-fade-in-up animation-delay-400 mt-10">
-            <a
-              href={latestRelease.html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-foreground/[0.03] text-muted-foreground text-[0.7rem] hover:border-primary/40 hover:text-foreground transition-all duration-300"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              Latest version: <span className="text-foreground font-bold">{latestRelease.tag_name}</span>
-              <span className="opacity-40">•</span>
+  return (
+    <div className="get-page">
+      <header className="get-nav">
+        <div className="wrap get-nav-inner">
+          <Link to="/" className="get-brand" aria-label="rem home">
+            <img src={iconSrc} alt="" />
+            <span>rem</span>
+          </Link>
+          <Link to="/" className="btn btn-ghost btn-sm get-back">
+            <ArrowLeft size={14} />
+            Back home
+          </Link>
+        </div>
+      </header>
+
+      <main>
+        <section className="wrap get-hero">
+          <p className="get-eyebrow">Get started</p>
+          <h1>Download &amp; install rem</h1>
+          <p className="get-lede">
+            rem is open source and takes a minute to install. Grab the Android app, the browser extension, or both.
+          </p>
+          {latestRelease && (
+            <a className="get-release" href={latestRelease.html_url} target="_blank" rel="noopener noreferrer">
+              <span className="get-dot" />
+              Latest <b>{latestRelease.tag_name}</b>
+              <span className="get-sep" />
               Released {formatDate(latestRelease.published_at)}
             </a>
-          </div>
-        )}
-      </section>
+          )}
+        </section>
 
-      <section className="py-16 px-6 lg:px-12">
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="observe-fade group glass-card lift-card rounded-xl p-8 transition-all duration-400 hover:border-primary relative overflow-hidden">
-            <div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-              style={{
-                background: "var(--card-glow)",
-              }}
-            />
-            <div className="relative z-[1]">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-5">
-                <Smartphone className="w-5 h-5" />
-              </div>
-              <h2
-                className="text-foreground text-xl mb-2"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                Android App
-              </h2>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                Install the APK directly on your Android device. No Play Store needed, just download, enable unknown sources, and install.
-              </p>
-
-              <div className="space-y-3 mb-8">
-                {[
-                  "Download the APK file below",
-                  "Open Settings → Security → Enable \"Unknown Sources\"",
-                  "Open the downloaded APK and tap Install",
-                  "Launch rem, with saving, reading, reminders and AI chat in your pocket",
-                ].map((step, i) => (
-                  <div key={`android-step-${i}`} className="flex items-start gap-3">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-[0.65rem] font-semibold flex items-center justify-center mt-0.5">
-                      {i + 1}
-                    </span>
-                    <p className="text-sm text-muted-foreground">{step}</p>
-                  </div>
+        <section className="wrap get-grid">
+          {cards.map((card) => (
+            <article className="get-card" key={card.title}>
+              <span className="get-ico"><card.icon size={18} /></span>
+              <h2>{card.title}</h2>
+              <p className="get-card-copy">{card.copy}</p>
+              <ol className="get-steps">
+                {card.steps.map((step) => (
+                  <li key={step}>{step}</li>
                 ))}
-              </div>
-
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                <a
-                  href={apkAsset?.browser_download_url || "https://github.com/natanim-kemal/rem/releases/latest"}
-                  className={`btn-shimmer inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-semibold text-xs tracking-wide transition-all duration-300 ${apkAsset ? 'bg-primary text-primary-foreground hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5' : 'bg-muted text-muted-foreground cursor-not-allowed opacity-70'}`}
-                >
-                  {isLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Download className="w-3.5 h-3.5" />}
-                  Download APK {apkAsset && <span className="opacity-60 font-black ml-1">({formatSize(apkAsset.size)})</span>}
+              </ol>
+              <div className="get-actions">
+                <a className="btn btn-primary get-download" href={card.href}>
+                  {isLoading ? <Loader2 size={15} className="get-spin" /> : <Download size={15} />}
+                  {card.label}
+                  {card.asset && <span className="get-size">{formatSize(card.asset.size)}</span>}
                 </a>
-
-                <a
-                  href="https://github.com/natanim-kemal/rem"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-border bg-foreground/[0.03] text-xs text-muted-foreground hover:text-primary hover:border-primary/40 transition-all duration-300 sm:px-0 sm:py-0 sm:rounded-none sm:border-none sm:bg-transparent sm:justify-start"
-                >
-                  <Github className="w-3.5 h-3.5" />
-                  View Source
-                  <ExternalLink className="w-2.5 h-2.5" />
+                <a className="get-source" href="https://github.com/natanim-kemal/rem" target="_blank" rel="noopener noreferrer">
+                  <Github size={14} />
+                  Source
+                  <ExternalLink size={11} />
                 </a>
               </div>
+            </article>
+          ))}
+        </section>
+
+        <section className="wrap">
+          <div className="get-open">
+            <div>
+              <h2>Open source, top to bottom</h2>
+              <p>Read the code, file an issue, or fork it for your own setup. rem stays yours.</p>
             </div>
-          </div>
-
-          <div className="observe-fade group glass-card lift-card rounded-xl p-8 transition-all duration-400 hover:border-primary relative overflow-hidden">
-            <div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-              style={{
-                background: "var(--card-glow)",
-              }}
-            />
-            <div className="relative z-[1]">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-5">
-                <Puzzle className="w-5 h-5" />
-              </div>
-              <h2
-                className="text-foreground text-xl mb-2"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                Browser Extension
-              </h2>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                Save articles, videos, and links directly from your browser with one click or Ctrl+Shift+S. Works with Chrome, Edge, and other Chromium-based browsers.
-              </p>
-
-              <div className="space-y-3 mb-8">
-                {[
-                  "Download the extension ZIP below",
-                  "Go to chrome://extensions and enable Developer Mode",
-                  "Click \"Load unpacked\" and select the extracted folder",
-                  "Pin the rem icon and start saving content",
-                ].map((step, i) => (
-                  <div key={`ext-step-${i}`} className="flex items-start gap-3">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-[0.65rem] font-semibold flex items-center justify-center mt-0.5">
-                      {i + 1}
-                    </span>
-                    <p className="text-sm text-muted-foreground">{step}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                <a
-                  href={extensionAsset?.browser_download_url || "https://github.com/natanim-kemal/rem/releases/latest"}
-                  className={`btn-shimmer inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-semibold text-xs tracking-wide transition-all duration-300 ${extensionAsset ? 'bg-primary text-primary-foreground hover:shadow-[0_0_30px_hsl(160_82%_39%/0.3)] hover:-translate-y-0.5' : 'bg-muted text-muted-foreground cursor-not-allowed opacity-70'}`}
-                >
-                  {isLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Download className="w-3.5 h-3.5" />}
-                  Download Extension {extensionAsset && <span className="opacity-60 font-black ml-1">({formatSize(extensionAsset.size)})</span>}
-                </a>
-
-                <a
-                  href="https://github.com/natanim-kemal/rem"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-border bg-foreground/[0.03] text-xs text-muted-foreground hover:text-primary hover:border-primary/40 transition-all duration-300 sm:px-0 sm:py-0 sm:rounded-none sm:border-none sm:bg-transparent sm:justify-start"
-                >
-                  <Github className="w-3.5 h-3.5" />
-                  View Source
-                  <ExternalLink className="w-2.5 h-2.5" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 px-6 lg:px-12">
-        <div className="max-w-4xl mx-auto observe-fade">
-          <div className="rounded-xl border border-border p-8" style={{
-            background: "var(--soft-panel)",
-          }}>
-            <div className="flex items-center gap-3 mb-6">
-              <Globe className="w-5 h-5 text-primary" />
-              <h3 className="text-foreground text-lg" style={{ fontFamily: "var(--font-heading)" }}>
-                Open Source
-              </h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-xl">
-              rem is completely open-source. You can inspect the code, contribute features, report bugs, or fork the project for your own use. We believe in transparency and community-driven development.
-            </p>
-            <a
-              href="https://github.com/natanim-kemal/rem"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cta-fill inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-primary text-primary uppercase tracking-[0.15em] text-[0.65rem] font-medium hover:text-primary-foreground transition-colors duration-300"
-            >
-              <Github className="w-3.5 h-3.5" />
+            <a className="btn btn-ghost btn-sm" href="https://github.com/natanim-kemal/rem" target="_blank" rel="noopener noreferrer">
+              <Github size={14} />
               View on GitHub
-              <ChevronRight className="w-3 h-3" />
             </a>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      <footer className="px-6 lg:px-12 py-8 text-center">
-        <p className="text-muted-foreground text-[0.65rem] opacity-60">
-          © 2026 rem • natanim.dev
-        </p>
+      <footer className="get-foot">
+        <div className="wrap">
+          <p>© {new Date().getFullYear()} rem · natanim.dev</p>
+          <Link to="/">Back to rem</Link>
+        </div>
       </footer>
     </div>
   );
 };
 
 export default GetStarted;
-
